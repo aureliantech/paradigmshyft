@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ParadigmSHYFT — Multidimensional Justice Solutions</title>
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+  <meta name="description" content="ParadigmSHYFT provides multidimensional justice solutions across Education, Business, Justice System, Legislation, and Media." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    /* System font fallbacks in case Google Fonts fails to load */
+    :root {
+      --serif-fallback: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+      --sans-fallback: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+    }
+  </style>
+  <style>
+    /* ─── RESET ─────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    /* ─── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --gold:        #C8922A;
+      --gold-mid:    #D4A84B;
+      --gold-light:  #E8C878;
+      --gold-pale:   #F5E9CC;
+      --gold-wash:   #FBF6ED;
+      --black:       #0F0E0A;
+      --ink:         #1C1A14;
+      --ink-mid:     #3A3830;
+      --muted:       #7A766E;
+      --rule:        #E6E1D8;
+      --rule-light:  #F0EDE7;
+      --white:       #FFFFFF;
+      --off-white:   #FAFAF7;
+      --cream:       #F7F3EC;
+
+      --serif: 'Cormorant Garamond', 'Palatino Linotype', Palatino, Georgia, serif;
+      --sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+      --nav-h: 76px;
+    }
+
+    /* ─── BASE ───────────────────────────────────────────── */
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--ink);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; }
+
+    /* ─── UTILITY ────────────────────────────────────────── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.9rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    h2.display {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 300;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      color: var(--black);
+    }
+    h2.display em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin: 2rem 0;
+    }
+    .gold-divider-bar { flex: 1; height: 1px; background: var(--rule); }
+    .gold-divider-diamond {
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────── */
+    .btn-primary {
+      display: inline-block;
+      padding: 0.85rem 2.25rem;
+      background: var(--black);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: 1.5px solid var(--black);
+      cursor: pointer;
+      transition: background 0.22s, border-color 0.22s, color 0.22s;
+    }
+    .btn-primary:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 0.85rem 2.25rem;
+      background: transparent;
+      color: var(--black);
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: 1.5px solid var(--rule);
+      cursor: pointer;
+      transition: border-color 0.22s, color 0.22s;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 0.85rem 2.25rem;
+      background: var(--gold);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: 1.5px solid var(--gold);
+      cursor: pointer;
+      transition: background 0.22s, border-color 0.22s;
+    }
+    .btn-gold:hover {
+      background: var(--black);
+      border-color: var(--black);
+    }
+
+    .btn-text {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .btn-text:hover { color: var(--gold); }
+    .btn-text .arrow { transition: transform 0.2s; font-size: 1rem; }
+    .btn-text:hover .arrow { transform: translateX(4px); }
+
+    /* ─── NAV ────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5rem;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--rule-light);
+      transition: box-shadow 0.3s;
+    }
+    #nav.scrolled {
+      box-shadow: 0 2px 32px rgba(0,0,0,0.06);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .nav-logo-mark {
+      width: 34px;
+      height: 34px;
+    }
+    .nav-brand-name {
+      font-family: var(--serif);
+      font-size: 1.12rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      color: var(--black);
+    }
+    .nav-brand-name span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.75rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      position: relative;
+      padding-bottom: 3px;
+      transition: color 0.2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { color: var(--black); }
+    .nav-links a:hover::after,
+    .nav-links a.active::after { width: 100%; }
+
+    .nav-connect {
+      padding: 0.52rem 1.5rem;
+      background: var(--black);
+      color: var(--white) !important;
+      font-size: 0.67rem !important;
+      letter-spacing: 0.2em;
+      border: 1.5px solid var(--black);
+      transition: background 0.22s, border-color 0.22s !important;
+    }
+    .nav-connect:hover {
+      background: var(--gold) !important;
+      border-color: var(--gold) !important;
+      color: var(--white) !important;
+    }
+    .nav-connect::after { display: none !important; }
+
+    /* ─── HERO ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      padding-top: var(--nav-h);
+    }
+
+    .hero-content {
+      background: var(--off-white);
+      padding: 7rem 5rem 6rem 5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid var(--rule);
+      position: relative;
+    }
+
+    .hero-content::after {
+      content: '';
+      position: absolute;
+      top: 5rem; right: -1px; bottom: 5rem;
+      width: 3px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+    }
+
+    .hero-overline {
+      font-size: 0.62rem;
+      letter-spacing: 0.38em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin-bottom: 2.25rem;
+      opacity: 1;
+    }
+    .hero-overline::before {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+
+    h1.hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(4rem, 7vw, 7rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: var(--black);
+      margin-bottom: 0.5rem;
+      opacity: 1;
+    }
+    h1.hero-headline em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold);
+      display: block;
+    }
+
+    .hero-sub {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 2rem 0;
+      opacity: 1;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+      max-width: 40ch;
+      margin-bottom: 3rem;
+      opacity: 1;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      opacity: 1;
+    }
+
+    .hero-visual {
+      position: relative;
+      background: var(--black);
+      overflow: hidden;
+    }
+    .hero-visual-bg {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to top, rgba(15,14,10,0.85) 0%, rgba(15,14,10,0.2) 50%, transparent 100%),
+        linear-gradient(160deg, rgba(200,146,42,0.12) 0%, transparent 50%);
+      z-index: 1;
+    }
+    .hero-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      opacity: 0.5;
+      filter: grayscale(20%) contrast(1.08);
+    }
+    .hero-visual-caption {
+      position: absolute;
+      bottom: 3rem; left: 3rem; right: 3rem;
+      z-index: 2;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.38rem 1rem;
+      background: rgba(200,146,42,0.2);
+      border: 1px solid rgba(200,146,42,0.4);
+      border-radius: 100px;
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 5px; height: 5px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    .hero-visual-caption h2 {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-style: italic;
+      font-weight: 300;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+    }
+    .hero-visual-caption p {
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── MARQUEE STRIP ──────────────────────────────────── */
+    .marquee-strip {
+      background: var(--black);
+      padding: 0.95rem 0;
+      overflow: hidden;
+      border-top: 1px solid rgba(200,146,42,0.2);
+      border-bottom: 1px solid rgba(200,146,42,0.2);
+    }
+    .marquee-track {
+      display: flex;
+      gap: 3.5rem;
+      animation: marquee 30s linear infinite;
+      width: max-content;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      white-space: nowrap;
+      font-size: 0.63rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .marquee-dot {
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── MISSION ────────────────────────────────────────── */
+    #mission {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      padding: 8rem 5rem;
+      align-items: start;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .mission-body {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .mission-blockquote {
+      margin: 2.5rem 0;
+      padding: 1.75rem 2rem;
+      background: var(--gold-wash);
+      border-left: 3px solid var(--gold);
+    }
+    .mission-blockquote p {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+
+
+    /* Services list */
+    .services-list { margin-top: 1rem; }
+    .service-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid var(--rule);
+      cursor: default;
+      transition: background 0.2s;
+      position: relative;
+    }
+    .service-row:first-child { border-top: 1px solid var(--rule); }
+    .service-row::before {
+      content: '';
+      position: absolute;
+      left: -1.5rem; top: 0; bottom: 0;
+      width: 2px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.3s ease;
+    }
+    .service-row:hover::before { transform: scaleY(1); }
+    .service-row:hover { padding-left: 0.35rem; }
+    .svc-num {
+      font-family: var(--serif);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      opacity: 0.65;
+      min-width: 2rem;
+      padding-top: 0.1rem;
+    }
+    .svc-name {
+      font-size: 0.93rem;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.02em;
+    }
+    .svc-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .svc-arrow {
+      margin-left: auto;
+      color: var(--gold);
+      opacity: 0;
+      transition: opacity 0.2s, transform 0.2s;
+      font-size: 1rem;
+      padding-top: 0.1rem;
+      flex-shrink: 0;
+    }
+    .service-row:hover .svc-arrow { opacity: 1; transform: translateX(3px); }
+
+    /* ─── PILLARS ────────────────────────────────────────── */
+    #pillars {
+      background: var(--cream);
+      padding: 8rem 5rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .pillars-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 4.5rem;
+    }
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .pillar-card {
+      background: var(--white);
+      padding: 2.75rem 2.25rem;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: background 0.25s;
+    }
+    .pillar-card::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s ease;
+    }
+    .pillar-card:hover { background: var(--gold-wash); }
+    .pillar-card:hover::after { transform: scaleX(1); }
+
+    .pillar-number {
+      font-family: var(--serif);
+      font-size: 4.5rem;
+      font-weight: 700;
+      color: var(--rule);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+      transition: color 0.25s;
+      user-select: none;
+    }
+    .pillar-card:hover .pillar-number { color: var(--gold-pale); }
+
+    .pillar-name {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+    .pillar-desc {
+      font-size: 0.86rem;
+      line-height: 1.78;
+      color: var(--muted);
+    }
+
+    .pillar-card.featured {
+      background: var(--black);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+    }
+    .pillar-card.featured::after { background: var(--gold); transform: scaleX(1); }
+    .pillar-card.featured .pillar-name { color: var(--white); }
+    .pillar-card.featured .pillar-desc { color: rgba(255,255,255,0.45); }
+
+    .featured-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .featured-label::before {
+      content: '';
+      width: 18px; height: 1px;
+      background: var(--gold);
+    }
+
+    /* ─── TEAM ───────────────────────────────────────────── */
+    #team {
+      padding: 8rem 5rem;
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3.5rem;
+    }
+    .team-card { display: flex; flex-direction: column; }
+    .team-img-wrap {
+      position: relative;
+      overflow: hidden;
+      background: var(--cream);
+      aspect-ratio: 4/5;
+      margin-bottom: 1.75rem;
+    }
+    .team-img-wrap img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .team-card:hover .team-img-wrap img { transform: scale(1.03); }
+    .team-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,14,10,0.4) 0%, transparent 55%);
+      pointer-events: none;
+    }
+    .team-img-fallback {
+      width: 100%; height: 100%;
+      align-items: center;
+      justify-content: center;
+      background: var(--cream);
+      font-family: var(--serif);
+      font-size: 6rem;
+      font-weight: 300;
+      color: var(--gold);
+    }
+    .team-role {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .team-role::before { content: ''; width: 20px; height: 1px; background: var(--gold); display: block; }
+    .team-name {
+      font-family: var(--serif);
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+    .team-bio {
+      font-size: 0.9rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ─── APPROACH ───────────────────────────────────────── */
+    #approach {
+      padding: 8rem 5rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+    }
+    .approach-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: center;
+    }
+    .approach-img-wrap {
+      position: relative;
+    }
+    .approach-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center 30%;
+      filter: sepia(18%) contrast(1.05) brightness(0.95);
+      display: block;
+    }
+    .approach-img-accent {
+      position: absolute;
+      bottom: -1.5rem;
+      right: -1.5rem;
+      width: 60%;
+      height: 60%;
+      border: 2px solid var(--gold-pale);
+      z-index: -1;
+    }
+    .approach-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: -1.5rem;
+      background: var(--gold);
+      color: var(--white);
+      padding: 1.25rem 1.5rem;
+      min-width: 120px;
+    }
+    .approach-badge-num {
+      font-family: var(--serif);
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1;
+      display: block;
+    }
+    .approach-badge-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 0.2rem;
+    }
+    .approach-body {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+    .approach-steps {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+    .approach-step {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: flex-start;
+    }
+    .approach-step:first-child { border-top: 1px solid var(--rule); }
+    .step-icon {
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .step-icon svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .step-title {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--black);
+      margin-bottom: 0.25rem;
+    }
+    .step-desc {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    #cta {
+      padding: 7rem 5rem;
+      background: var(--cream);
+      border-bottom: 1px solid var(--rule);
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: 'SHYFT';
+      position: absolute;
+      right: -2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--serif);
+      font-size: 18rem;
+      font-weight: 700;
+      color: rgba(200,146,42,0.05);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -0.05em;
+    }
+    .cta-inner {
+      max-width: 640px;
+      position: relative;
+    }
+    .cta-title {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.05;
+      color: var(--black);
+      margin-bottom: 1.25rem;
+    }
+    .cta-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+    .cta-body {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      max-width: 44ch;
+      margin-bottom: 2.75rem;
+    }
+    .cta-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────── */
+    #contact {
+      padding: 8rem 5rem;
+      background: var(--black);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7rem;
+      align-items: start;
+    }
+
+    #contact .section-label { color: var(--gold-mid); }
+    #contact .section-label::before { background: var(--gold-mid); }
+    #contact h2.display { color: var(--white); }
+    #contact h2.display em { color: var(--gold); }
+    #contact p.contact-body {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .field label {
+      font-size: 0.62rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+    .field input,
+    .field select,
+    .field textarea {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      appearance: none;
+      border-radius: 0;
+    }
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(255,255,255,0.2); }
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus { border-color: var(--gold); }
+    .field textarea { min-height: 120px; resize: vertical; }
+    .field select { color: rgba(255,255,255,0.6); cursor: pointer; }
+    .field select option { background: var(--ink); color: var(--white); }
+
+    .contact-info {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .contact-info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+    .contact-info-icon {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(200,146,42,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-info-icon svg { width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+    .contact-info-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      margin-bottom: 0.2rem;
+    }
+    .contact-info-value {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────── */
+    footer {
+      background: #080807;
+      padding: 2.5rem 5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.35);
+    }
+    .footer-brand span { color: var(--gold); }
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 0.63rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.28);
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--gold); }
+    .footer-copy {
+      font-size: 0.63rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    /* Safety: if animation fails, content is still visible */
+    [style*="animation"] { opacity: 1 !important; }
+
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .reveal.animate-ready {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+    .reveal.animate-ready.in { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      #nav { padding: 0 2.5rem; }
+      #hero { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 50vh; }
+      .hero-content { padding: 5rem 2.5rem 4rem; }
+      #mission { grid-template-columns: 1fr; gap: 4rem; padding: 5rem 2.5rem; }
+      #pillars { padding: 5rem 2.5rem; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      #team { padding: 5rem 2.5rem; }
+      .team-grid { grid-template-columns: 1fr; max-width: 480px; }
+      #approach { padding: 5rem 2.5rem; }
+      .approach-inner { grid-template-columns: 1fr; gap: 4rem; }
+      .approach-badge { left: 0; }
+      #cta { padding: 5rem 2.5rem; }
+      #contact { grid-template-columns: 1fr; gap: 4rem; padding: 5rem 2.5rem; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
+      .footer-links { justify-content: center; }
+    }
+
+    @media (max-width: 700px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .pillars-header { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+      h1.hero-headline { font-size: clamp(3rem, 12vw, 5rem); }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ NAV ══════════════════════════════════════════════ -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">
+      <img src="logo-bird.jpeg" alt="ParadigmSHYFT bird logo" class="nav-logo-mark" style="object-fit:contain;background:transparent;" />
+      <span class="nav-brand-name">PARADIGM<span>SHYFT</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#hero" class="active">Home</a></li>
+      <li><a href="#mission">About</a></li>
+      <li><a href="#pillars">Services</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact" class="nav-connect">Connect</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══ HERO ══════════════════════════════════════════════ -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-overline">Multidimensional Justice Solutions</div>
+      <h1 class="hero-headline">
+        Shifting<br>the
+        <em>Paradigm</em>
+      </h1>
+      <div class="hero-sub">Education · Business · Justice · Legislation · Media</div>
+      <p class="hero-desc">
+        We work at the intersection of systems and humanity — helping organizations dismantle barriers and build environments where every individual can thrive.
+      </p>
+      <div class="hero-actions">
+        <a href="#pillars" class="btn-primary">Our Services</a>
+        <a href="#mission" class="btn-text">Our story <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-visual-bg"></div>
+      <!-- Replace src with your actual photo -->
+      <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?w=900&q=80" alt="ParadigmSHYFT Leadership" loading="eager" />
+      <div class="hero-visual-caption">
+        <div class="hero-badge">Est. 2020 · Milwaukee &amp; Beyond</div>
+        <h2>"The work is the work."</h2>
+        <p>Consulting · Training · Transformation</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ MARQUEE ════════════════════════════════════════════ -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <!-- doubled for seamless loop -->
+      <span class="marquee-item"><span class="marquee-dot"></span>Education</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Business</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Justice System</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Legislation</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Media</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Executive Consulting</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Group Presentations</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>One-on-One Sessions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>MIRROR Program</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Leadership Dinner</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Education</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Business</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Justice System</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Legislation</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Media</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Executive Consulting</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Group Presentations</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>One-on-One Sessions</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>MIRROR Program</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>Leadership Dinner</span>
+    </div>
+  </div>
+
+  <!-- ══ MISSION ════════════════════════════════════════════ -->
+  <section id="mission">
+    <div class="reveal">
+      <div class="section-label">Our Mission</div>
+      <h2 class="display">A new approach to <em>systemic change</em></h2>
+      <div class="gold-divider">
+        <div class="gold-divider-bar"></div>
+        <div class="gold-divider-diamond"></div>
+        <div class="gold-divider-bar"></div>
+      </div>
+      <p class="mission-body">
+        ParadigmSHYFT provides customized consultation with executive personnel to help identify gaps, obstacles, and opportunities within your organization.
+      </p>
+      <p class="mission-body">
+        Through group presentations on the root causes of systemic issues and one-on-one consultations with any member of your team, we lay the groundwork for lasting, meaningful transformation.
+      </p>
+      <div class="mission-blockquote">
+        <p>"The system isn't broken — it was built this way. Our work is rebuilding it, together."</p>
+      </div>
+
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <div class="section-label">Consulting Services</div>
+      <h2 class="display">What we <em>offer</em></h2>
+      <div class="services-list">
+        <div class="service-row">
+          <span class="svc-num">01</span>
+          <div>
+            <div class="svc-name">Executive Consultation</div>
+            <div class="svc-desc">Customized sessions with leadership to identify gaps, obstacles, and untapped opportunities within your organization.</div>
+          </div>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">02</span>
+          <div>
+            <div class="svc-name">Group Presentations</div>
+            <div class="svc-desc">Deep-dive sessions exploring root causes among staff and laying the groundwork for an optimal organizational environment.</div>
+          </div>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">03</span>
+          <div>
+            <div class="svc-name">One-on-One Consultations</div>
+            <div class="svc-desc">Personalized sessions with any member of your team — meeting people exactly where they are, without judgment.</div>
+          </div>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">04</span>
+          <div>
+            <div class="svc-name">The MIRROR Program</div>
+            <div class="svc-desc">A proprietary framework for radical self-reflection and institutional accountability that drives measurable change.</div>
+          </div>
+          <span class="svc-arrow">→</span>
+        </div>
+        <div class="service-row">
+          <span class="svc-num">05</span>
+          <div>
+            <div class="svc-name">Leadership Dinner Series</div>
+            <div class="svc-desc">Intimate gatherings connecting changemakers across sectors in meaningful, off-the-record dialogue.</div>
+          </div>
+          <span class="svc-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PILLARS ════════════════════════════════════════════ -->
+  <section id="pillars">
+    <div class="pillars-header reveal">
+      <div>
+        <div class="section-label">Five Focus Areas</div>
+        <h2 class="display">Offering <em>specialty services</em></h2>
+      </div>
+      <a href="#contact" class="btn-outline">Schedule a Consultation</a>
+    </div>
+
+    <div class="pillars-grid">
+      <div class="pillar-card reveal">
+        <div class="pillar-number">01</div>
+        <div class="pillar-name">Education</div>
+        <div class="pillar-desc">Reimagining learning environments to be equitable, empowering, and effective for every student regardless of background or circumstance.</div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-number">02</div>
+        <div class="pillar-name">Business</div>
+        <div class="pillar-desc">Embedding justice and inclusion into organizational culture, hiring practices, and leadership development strategies that last.</div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-number">03</div>
+        <div class="pillar-name">Justice System</div>
+        <div class="pillar-desc">Bridging the gap between institutions and communities to create more humane, effective, and genuinely just outcomes for all.</div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-1">
+        <div class="pillar-number">04</div>
+        <div class="pillar-name">Legislation</div>
+        <div class="pillar-desc">Informing policy-makers with lived experience and rigorous research to drive meaningful, lasting legislative reform.</div>
+      </div>
+      <div class="pillar-card reveal reveal-delay-2">
+        <div class="pillar-number">05</div>
+        <div class="pillar-name">Media</div>
+        <div class="pillar-desc">Shaping narratives that humanize marginalized voices and challenge systemic biases embedded in media culture and storytelling.</div>
+      </div>
+      <div class="pillar-card featured reveal reveal-delay-3">
+        <div class="featured-label">Ready to begin</div>
+        <div class="pillar-name">Start the conversation.</div>
+        <div class="pillar-desc" style="margin-bottom:2rem;">Every paradigm shift begins with a single honest conversation.</div>
+        <a href="#contact" class="btn-gold">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TEAM ════════════════════════════════════════════════ -->
+  <section id="team">
+    <div style="margin-bottom:4rem;" class="reveal">
+      <div class="section-label">The Team</div>
+      <h2 class="display">The people behind<br>the <em>shift.</em></h2>
+    </div>
+    <div class="team-grid">
+
+      <div class="team-card reveal">
+        <div class="team-img-wrap">
+          <img src="adam.jpg" alt="Adam — Chief Executive Officer"
+               onerror="this.style.display='none';document.getElementById('adam-fallback').style.display='flex'" />
+          <div id="adam-fallback" class="team-img-fallback" style="display:none;position:absolute;inset:0;">
+            <span>A</span>
+          </div>
+          <div class="team-img-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-role">Chief Executive Officer</div>
+          <div class="team-name">Adam</div>
+          <p class="team-bio">
+            With over a decade of work at the intersection of justice, education, and systems change, Adam founded ParadigmSHYFT to transform how organizations approach equity — from the inside out.
+          </p>
+        </div>
+      </div>
+
+      <div class="team-card reveal reveal-delay-2">
+        <div class="team-img-wrap">
+          <img src="shannon.jpg" alt="Shannon — Operations Assistant"
+               onerror="this.style.display='none';document.getElementById('shannon-fallback').style.display='flex'" />
+          <div id="shannon-fallback" class="team-img-fallback" style="display:none;position:absolute;inset:0;">
+            <span>S</span>
+          </div>
+          <div class="team-img-overlay"></div>
+        </div>
+        <div class="team-info">
+          <div class="team-role">Operations Assistant</div>
+          <div class="team-name">Shannon</div>
+          <p class="team-bio">
+            Shannon keeps ParadigmSHYFT running with precision and care — ensuring every client experience is seamless, every detail is handled, and every engagement delivers on its promise.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══ APPROACH ══════════════════════════════════════════════ -->
+  <section id="approach">
+    <div class="approach-inner">
+      <div class="approach-visual reveal">
+        <div class="approach-img-wrap">
+          <img src="milwaukee.jpg" alt="Milwaukee" />
+          <div class="approach-img-accent"></div>
+          <div class="approach-badge">
+            <span class="approach-badge-num">10+</span>
+            <span class="approach-badge-label">Years of Impact</span>
+          </div>
+        </div>
+      </div>
+      <div class="approach-content reveal reveal-delay-2">
+        <div class="section-label">Our Approach</div>
+        <h2 class="display">Built on truth.<br><em>Driven by change.</em></h2>
+        <p class="approach-body" style="margin-top:1.5rem;">
+          We don't offer generic training modules or checkbox solutions. Our work is deeply personal, system-aware, and results-driven — because real change demands nothing less.
+        </p>
+        <p class="approach-body">
+          Whether you're a corporation, a school district, a government agency, or a nonprofit — we meet you where you are and help you get to where you need to be.
+        </p>
+        <div class="approach-steps">
+          <div class="approach-step">
+            <div class="step-icon">
+              <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="5"/><path d="M8 5v3l2 2"/></svg>
+            </div>
+            <div>
+              <div class="step-title">Assess &amp; Diagnose</div>
+              <div class="step-desc">We start by listening — deeply — to understand the real challenges your organization faces.</div>
+            </div>
+          </div>
+          <div class="approach-step">
+            <div class="step-icon">
+              <svg viewBox="0 0 16 16"><path d="M2 8h12M8 2l6 6-6 6"/></svg>
+            </div>
+            <div>
+              <div class="step-title">Design &amp; Deliver</div>
+              <div class="step-desc">We build a customized roadmap and deliver programming tailored to your people and culture.</div>
+            </div>
+          </div>
+          <div class="approach-step">
+            <div class="step-icon">
+              <svg viewBox="0 0 16 16"><polyline points="2,9 6,13 14,3"/></svg>
+            </div>
+            <div>
+              <div class="step-title">Measure &amp; Sustain</div>
+              <div class="step-desc">We track real outcomes and stay alongside you to ensure the shift sticks long-term.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BAND ═══════════════════════════════════════════ -->
+  <section id="cta">
+    <div class="cta-inner reveal">
+      <div class="section-label">Take the First Step</div>
+      <h2 class="cta-title">
+        The conversation that<br><em>changes everything</em>
+      </h2>
+      <p class="cta-body">
+        Whether you represent an institution ready for change, a leader seeking clarity, or a community demanding better — we are here to work alongside you.
+      </p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+        <a href="#pillars" class="btn-text">Explore our services <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ════════════════════════════════════════════ -->
+  <section id="contact">
+    <div class="reveal">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="display">Let's start<br>your <em>shift.</em></h2>
+      <p class="contact-body">
+        Ready to explore what a paradigm shift looks like for your organization? Reach out and we'll set up an initial conversation.
+      </p>
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 16 16"><path d="M2 4l6 5 6-5"/><rect x="1" y="3" width="14" height="10" rx="1"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value">info@paradigmshyft.org</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="6" r="3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Speaking &amp; Engagements</div>
+            <div class="contact-info-value">Available nationwide &amp; internationally</div>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 16 16"><path d="M8 1C5.2 1 3 3.2 3 6c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z"/><circle cx="8" cy="6" r="1.5"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Based In</div>
+            <div class="contact-info-value">Milwaukee, WI &amp; Nationwide</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-2">
+      <div class="section-label">Send a Message</div>
+      <form class="contact-form" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="field">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="fname" placeholder="John" required />
+          </div>
+          <div class="field">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lname" placeholder="Doe" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="john@yourorg.com" required />
+        </div>
+        <div class="field">
+          <label for="org">Organization</label>
+          <input type="text" id="org" name="org" placeholder="Your organization or agency" />
+        </div>
+        <div class="field">
+          <label for="service">Area of Interest</label>
+          <select id="service" name="service">
+            <option value="" disabled selected>Select a service area</option>
+            <option value="executive">Executive Consultation</option>
+            <option value="group">Group Presentation</option>
+            <option value="oneonone">One-on-One Consultation</option>
+            <option value="mirror">The MIRROR Program</option>
+            <option value="dinner">Leadership Dinner Series</option>
+            <option value="other">Other / Not Sure Yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Tell Us About Your Goals</label>
+          <textarea id="message" name="message" placeholder="What challenges is your organization facing? What does success look like for you?"></textarea>
+        </div>
+        <button type="submit" class="btn-gold" style="align-self:flex-start;cursor:pointer;font-family:var(--sans);">
+          Send Message →
+        </button>
+        <p id="form-msg" style="font-size:0.82rem;color:var(--gold-mid);display:none;margin-top:0.5rem;">
+          Thank you — we'll be in touch soon.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ═════════════════════════════════════════════ -->
+  <footer>
+    <div class="footer-brand">PARADIGM<span>SHYFT</span></div>
+    <ul class="footer-links">
+      <li><a href="#hero">Home</a></li>
+      <li><a href="#mission">About</a></li>
+      <li><a href="#pillars">Services</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Connect</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 ParadigmSHYFT · All Rights Reserved</div>
+  </footer>
+
+  <script>
+    /* ── Scroll-based nav shadow ── */
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+      /* compact nav */
+      nav.style.height = window.scrollY > 80 ? '62px' : '';
+      document.documentElement.style.setProperty('--nav-h', window.scrollY > 80 ? '62px' : '76px');
+    }, { passive: true });
+
+    /* ── Intersection reveal ── */
+    // Only hide elements if JS + IntersectionObserver both work
+    // This prevents blank page if either fails
+    if ('IntersectionObserver' in window) {
+      const revealEls = document.querySelectorAll('.reveal');
+      const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            revealObs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -40px 0px' });
+      
+      revealEls.forEach(el => {
+        el.classList.add('animate-ready');
+        revealObs.observe(el);
+      });
+
+      // Failsafe: after 2s force-show anything still hidden
+      setTimeout(() => {
+        document.querySelectorAll('.reveal.animate-ready:not(.in)').forEach(el => {
+          el.classList.add('in');
+        });
+      }, 2000);
+    }
+
+    /* ── Active nav link ── */
+    const sections = document.querySelectorAll('section[id], div[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const linkObs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => {
+            a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { threshold: 0.4 });
+    sections.forEach(s => linkObs.observe(s));
+
+    /* ── Form handler ── */
+    function handleSubmit(e) {
+      e.preventDefault();
+      const msg = document.getElementById('form-msg');
+      msg.style.display = 'block';
+     
