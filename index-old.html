@@ -727,6 +727,29 @@
       border: 2px solid var(--gold-pale);
       z-index: -1;
     }
+    .approach-badge {
+      position: absolute;
+      top: 1.5rem;
+      left: -1.5rem;
+      background: var(--gold);
+      color: var(--white);
+      padding: 1.25rem 1.5rem;
+      min-width: 120px;
+    }
+    .approach-badge-num {
+      font-family: var(--serif);
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 1;
+      display: block;
+    }
+    .approach-badge-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      margin-top: 0.2rem;
+    }
     .approach-body {
       font-size: 1rem;
       line-height: 1.85;
@@ -972,712 +995,6 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
-    /* ─── WORK / PROJECTS — "THE INDEX, COMPRESSED" ──────── */
-    /* One viewport. Five strips. Everything visible.
-       Inspired by Vignelli's Unimark grids, Swiss travel posters,
-       and Pentagram exhibition catalogs. Discipline as design. */
-
-    #work {
-      background: #F4EFE6;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--rule);
-    }
-    #work::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 5rem; right: 5rem;
-      height: 1px;
-      background: var(--ink);
-      opacity: 0.85;
-    }
-
-    .work-frame {
-      max-width: 1440px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 2.75rem 5rem 4.5rem;
-    }
-
-    /* ── Header line ────────────────────────────────────── */
-    .work-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 3rem;
-      padding-bottom: 1.25rem;
-      border-bottom: 1px solid var(--ink);
-    }
-    .work-header-title {
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: clamp(2rem, 3.4vw, 3.1rem);
-      line-height: 1;
-      letter-spacing: -0.022em;
-      color: var(--black);
-    }
-    .work-header-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .work-header-mark {
-      font-family: var(--sans);
-      font-size: 0.6rem;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--muted);
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-    .work-header-mark::before {
-      content: '';
-      width: 28px; height: 1px;
-      background: var(--muted);
-    }
-
-    /* ── Strip row ──────────────────────────────────────── */
-    .work-strips {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 0;
-      border-top: 1px solid rgba(28, 26, 20, 0.18);
-      border-bottom: 1px solid rgba(28, 26, 20, 0.18);
-      min-height: 320px;
-      margin-top: 1.75rem;
-    }
-
-    .work-strip {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 2.25rem 1.75rem 1.5rem;
-      border-right: 1px solid rgba(28, 26, 20, 0.12);
-      background: transparent;
-      cursor: pointer;
-      overflow: hidden;
-      min-width: 0;
-      transition: background 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                  box-shadow 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-                  transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      /* Button reset */
-      border-top: none;
-      border-bottom: none;
-      border-left: none;
-      font-family: inherit;
-      color: inherit;
-      text-align: left;
-      appearance: none;
-      -webkit-appearance: none;
-    }
-    .work-strip:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: -4px;
-    }
-    .work-strip:last-child {
-      border-right: none;
-    }
-    /* Hide own right border when lifted */
-    .work-strip:hover,
-    .work-strip.is-active {
-      border-right-color: transparent;
-    }
-
-    /* The bottom gold rule — sweeps in left-to-right on hover/active */
-    .work-strip::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 3px;
-      background: var(--gold);
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
-      z-index: 3;
-    }
-
-    /* A soft ivory wash that rises from below on hover */
-    .work-strip::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.55) 60%,
-        rgba(255, 255, 255, 0.85) 100%);
-      opacity: 0;
-      transition: opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* HOVER STATE — unmissable */
-    .work-strip:hover {
-      background: #FFFEFB;
-      box-shadow: 0 18px 40px -22px rgba(28, 26, 20, 0.18),
-                  0 4px 12px -8px rgba(200, 146, 42, 0.18);
-      transform: translateY(-2px);
-      z-index: 2;
-    }
-    .work-strip:hover::before { transform: scaleX(1); }
-    .work-strip:hover::after { opacity: 1; }
-
-    /* ACTIVE STATE — distinct from hover, persists */
-    .work-strip.is-active {
-      background: #FFFFFF;
-      box-shadow: 0 22px 50px -24px rgba(28, 26, 20, 0.22),
-                  0 4px 14px -8px rgba(200, 146, 42, 0.22);
-      transform: translateY(-2px);
-      z-index: 2;
-    }
-    .work-strip.is-active::before {
-      transform: scaleX(1);
-      height: 4px;
-    }
-    .work-strip.is-active::after { opacity: 1; }
-
-    /* Top of strip — folio + name */
-    .work-strip-head {
-      position: relative;
-      z-index: 2;
-    }
-    .work-strip-folio {
-      font-family: var(--sans);
-      font-size: 0.58rem;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      transition: color 0.4s ease;
-    }
-    .work-strip-folio::before {
-      content: '';
-      display: block;
-      width: 18px;
-      height: 1px;
-      background: var(--muted);
-      transition: background 0.4s ease, width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .work-strip:hover .work-strip-folio,
-    .work-strip.is-active .work-strip-folio { color: var(--gold); }
-    .work-strip:hover .work-strip-folio::before,
-    .work-strip.is-active .work-strip-folio::before {
-      background: var(--gold);
-      width: 32px;
-    }
-
-    .work-strip-name {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(1.85rem, 2.4vw, 2.6rem);
-      line-height: 1.04;
-      letter-spacing: -0.022em;
-      color: var(--black);
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
-                  color 0.4s ease;
-    }
-    .work-strip-name em {
-      font-style: italic;
-      color: var(--gold);
-      transition: color 0.4s ease;
-    }
-    .work-strip:hover .work-strip-name {
-      transform: translateY(-3px);
-    }
-    .work-strip.is-active .work-strip-name {
-      transform: translateY(-3px);
-    }
-
-    /* Numeral REMOVED — name is the hero */
-
-    /* Bottom of strip — status indicator */
-    .work-strip-status {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      font-family: var(--sans);
-      font-size: 0.58rem;
-      letter-spacing: 0.34em;
-      text-transform: uppercase;
-      color: var(--muted);
-    }
-    .work-strip-status .dot {
-      display: block;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-    }
-    .work-strip-status.is-concluded .dot {
-      background: var(--muted);
-    }
-
-    /* ── Reveal panel ──────────────────────────────────── */
-    .work-reveal {
-      position: relative;
-      padding: 2.25rem 0 2rem;
-      border-bottom: 1px solid rgba(28, 26, 20, 0.18);
-      min-height: 0;
-    }
-    .work-reveal-panel {
-      display: none;
-    }
-    .work-reveal-panel.is-active {
-      display: block;
-      animation: workRevealIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-    }
-    @keyframes workRevealIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .work-reveal-body {
-      font-family: var(--sans);
-      font-size: 1.02rem;
-      line-height: 1.72;
-      color: var(--ink);
-      max-width: 78ch;
-    }
-
-    /* ── International section — proper area, not an appendix ── */
-    .work-international {
-      padding: 4.5rem 0 1rem;
-      border-top: 1px solid rgba(28, 26, 20, 0.18);
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 4.5rem;
-      align-items: start;
-    }
-    .work-international-head {
-      position: relative;
-    }
-    .work-international-mark {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      margin-bottom: 1.5rem;
-    }
-    .work-international-mark::before {
-      content: '';
-      width: 32px; height: 1px;
-      background: var(--gold);
-    }
-    .work-international-title {
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: clamp(2.2rem, 3.6vw, 3.4rem);
-      line-height: 0.98;
-      letter-spacing: -0.022em;
-      color: var(--black);
-    }
-    .work-international-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .work-international-body {
-      padding-top: 0.5rem;
-    }
-    .work-international-text {
-      font-family: var(--sans);
-      font-size: 1.02rem;
-      line-height: 1.72;
-      color: var(--ink);
-      max-width: 64ch;
-      margin-bottom: 2.25rem;
-    }
-    .work-international-countries {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: baseline;
-      font-family: var(--serif);
-      font-weight: 300;
-      font-style: italic;
-      font-size: clamp(1.05rem, 1.4vw, 1.35rem);
-      line-height: 1.45;
-      color: var(--black);
-      margin-bottom: 2.25rem;
-      letter-spacing: -0.005em;
-    }
-    .work-international-countries span {
-      padding: 0 0.95rem 0 0;
-      position: relative;
-      margin-right: 0.45rem;
-    }
-    .work-international-countries span:not(:last-child)::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 1px;
-      height: 0.7em;
-      background: rgba(200, 146, 42, 0.55);
-    }
-    .work-international-countries .country-pending {
-      color: var(--gold);
-      font-weight: 400;
-    }
-    .work-international-report {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      padding: 0.75rem 0 0.7rem;
-      font-family: var(--sans);
-      font-size: 0.68rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--black);
-      border-bottom: 1px solid var(--black);
-      transition: color 0.3s ease, border-color 0.3s ease, gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .work-international-report:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-      gap: 1rem;
-    }
-    .work-international-report .arrow {
-      font-size: 0.95rem;
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .work-international-report:hover .arrow {
-      transform: translateX(4px) translateY(-1px);
-    }
-
-    /* ── Section reveal-in ─────────────────────────────── */
-    #work .work-frame {
-      opacity: 1;
-      transition: opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    #work.animate-ready .work-frame {
-      opacity: 0;
-    }
-    #work.animate-ready.in .work-frame {
-      opacity: 1;
-    }
-
-    /* ─── PRESS & MEDIA ──────────────────────────────────── */
-    /* ── First, restore the WORK reduced-motion overrides ── */
-    @media (prefers-reduced-motion: reduce) {
-      .work-strip,
-      .work-strip::before,
-      .work-strip::after,
-      .work-strip-folio,
-      .work-strip-folio::before,
-      .work-strip-name,
-      .work-strip-name em,
-      .work-reveal-panel,
-      .work-international-report,
-      .work-international-report .arrow,
-      #work .work-frame {
-        transition: none !important;
-        animation: none !important;
-      }
-      .work-strip:hover,
-      .work-strip.is-active { transform: none !important; }
-      #work .work-frame { opacity: 1 !important; }
-    }
-
-    /* ─── PRESS & MEDIA — typographic press index ─────────── */
-    #press {
-      background: var(--white);
-      padding: 8rem 5rem;
-      border-bottom: 1px solid var(--rule);
-      position: relative;
-    }
-    .press-frame {
-      max-width: 1440px;
-      margin: 0 auto;
-    }
-    .press-header {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      align-items: end;
-      margin-bottom: 5rem;
-    }
-    .press-header-title {
-      font-family: var(--serif);
-      font-weight: 300;
-      font-size: clamp(2.8rem, 5.2vw, 4.8rem);
-      line-height: 0.96;
-      letter-spacing: -0.022em;
-      color: var(--black);
-    }
-    .press-header-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .press-header-intro {
-      font-family: var(--sans);
-      font-size: 1rem;
-      line-height: 1.72;
-      color: var(--ink-mid);
-      max-width: 40ch;
-      padding-bottom: 0.75rem;
-    }
-
-    /* Featured book — distinct treatment, top of section */
-    .press-featured {
-      display: grid;
-      grid-template-columns: 0.85fr 1.4fr auto;
-      gap: 3rem;
-      align-items: center;
-      padding: 2.5rem 0 2.5rem;
-      border-top: 1px solid var(--ink);
-      border-bottom: 1px solid rgba(28, 26, 20, 0.18);
-      margin-bottom: 0;
-      text-decoration: none;
-      color: inherit;
-      position: relative;
-      transition: padding 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .press-featured::before {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -1px;
-      width: 0; height: 2px;
-      background: var(--gold);
-      transition: width 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .press-featured:hover::before { width: 100%; }
-    .press-featured:hover { padding-left: 1.5rem; }
-    .press-featured-tag {
-      font-family: var(--sans);
-      font-size: 0.62rem;
-      font-weight: 500;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--gold);
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-    }
-    .press-featured-tag::before {
-      content: '';
-      width: 32px; height: 1px;
-      background: var(--gold);
-      transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .press-featured:hover .press-featured-tag::before { width: 48px; }
-    .press-featured-title {
-      font-family: var(--serif);
-      font-style: italic;
-      font-weight: 400;
-      font-size: clamp(1.55rem, 2.6vw, 2.4rem);
-      line-height: 1.1;
-      letter-spacing: -0.018em;
-      color: var(--black);
-    }
-    .press-featured-meta {
-      font-family: var(--sans);
-      font-size: 0.78rem;
-      letter-spacing: 0.02em;
-      color: var(--muted);
-      margin-top: 0.5rem;
-    }
-    .press-featured-arrow {
-      font-family: var(--sans);
-      font-size: 0.66rem;
-      font-weight: 500;
-      letter-spacing: 0.28em;
-      text-transform: uppercase;
-      color: var(--black);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.75rem;
-      transition: color 0.3s ease, gap 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-      white-space: nowrap;
-    }
-    .press-featured-arrow .arrow {
-      font-size: 0.95rem;
-      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .press-featured:hover .press-featured-arrow { color: var(--gold); gap: 1.1rem; }
-    .press-featured:hover .press-featured-arrow .arrow { transform: translateX(4px) translateY(-1px); }
-
-    /* Press index — typographic two-column grid */
-    .press-index {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      column-gap: 0;
-      row-gap: 0;
-    }
-
-    .press-item {
-      position: relative;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: end;
-      padding: 2.25rem 2.5rem 2.25rem 0;
-      border-bottom: 1px solid rgba(28, 26, 20, 0.12);
-      text-decoration: none;
-      color: inherit;
-      transition: padding 0.45s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .press-item:nth-child(odd) {
-      padding-right: 2.5rem;
-      border-right: 1px solid rgba(28, 26, 20, 0.12);
-    }
-    .press-item:nth-child(even) {
-      padding-left: 2.5rem;
-    }
-    /* Bottom gold rule sweeps in on hover */
-    .press-item::before {
-      content: '';
-      position: absolute;
-      left: 0; bottom: -1px;
-      width: 0; height: 2px;
-      background: var(--gold);
-      transition: width 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-      z-index: 2;
-    }
-    .press-item:nth-child(even)::before { left: 2.5rem; }
-    .press-item:hover::before { width: calc(100% - 2.5rem); }
-    .press-item:hover { padding-top: 2rem; padding-bottom: 2.5rem; }
-
-    .press-item-content {
-      display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
-      min-width: 0;
-    }
-    .press-item-outlet {
-      font-family: var(--sans);
-      font-size: 0.6rem;
-      font-weight: 600;
-      letter-spacing: 0.42em;
-      text-transform: uppercase;
-      color: var(--ink);
-      transition: color 0.4s ease;
-    }
-    /* Outlet-specific typographic flourishes — type-as-logo */
-    .press-item-outlet.outlet-tedx {
-      font-family: var(--sans);
-      letter-spacing: 0.05em;
-      font-weight: 700;
-      text-transform: none;
-      font-size: 0.95rem;
-    }
-    .press-item-outlet.outlet-tedx .x {
-      color: #E62B1E;
-    }
-    .press-item-outlet.outlet-jsonline {
-      font-family: var(--serif);
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.005em;
-      text-transform: none;
-    }
-    .press-item-outlet.outlet-fox6 {
-      font-family: var(--sans);
-      font-weight: 800;
-      font-size: 0.95rem;
-      letter-spacing: 0.04em;
-      text-transform: none;
-    }
-    .press-item-outlet.outlet-fox6 .six {
-      color: #003875;
-    }
-    .press-item-outlet.outlet-tmj4 {
-      font-family: var(--sans);
-      font-weight: 800;
-      letter-spacing: 0.06em;
-      font-size: 0.95rem;
-      text-transform: none;
-    }
-    .press-item-outlet.outlet-tmj4 .four {
-      color: #C8102E;
-    }
-    .press-item-outlet.outlet-youtube {
-      font-family: var(--sans);
-      font-weight: 700;
-      letter-spacing: 0.005em;
-      text-transform: none;
-      font-size: 0.92rem;
-    }
-    .press-item-outlet.outlet-youtube::before {
-      content: '▶';
-      color: var(--gold);
-      margin-right: 0.5rem;
-      font-size: 0.75em;
-    }
-    .press-item:hover .press-item-outlet { color: var(--gold); }
-    .press-item:hover .press-item-outlet.outlet-tedx,
-    .press-item:hover .press-item-outlet.outlet-jsonline,
-    .press-item:hover .press-item-outlet.outlet-fox6,
-    .press-item:hover .press-item-outlet.outlet-tmj4,
-    .press-item:hover .press-item-outlet.outlet-youtube {
-      /* Wordmark colors stay; only the wash animates */
-    }
-
-    .press-item-title {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(1.15rem, 1.6vw, 1.5rem);
-      line-height: 1.2;
-      letter-spacing: -0.015em;
-      color: var(--black);
-    }
-    .press-item-title em {
-      font-style: italic;
-      color: var(--gold);
-    }
-    .press-item-meta {
-      font-family: var(--sans);
-      font-size: 0.72rem;
-      letter-spacing: 0.02em;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-    }
-    .press-item-meta .dot {
-      width: 3px;
-      height: 3px;
-      border-radius: 50%;
-      background: var(--muted);
-    }
-    .press-item-arrow {
-      font-family: var(--sans);
-      font-size: 1.05rem;
-      color: var(--rule);
-      transition: color 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-      padding-bottom: 0.15rem;
-    }
-    .press-item:hover .press-item-arrow {
-      color: var(--gold);
-      transform: translate(4px, -4px);
-    }
-
-    /* ─── PRESS & MEDIA / REDUCED MOTION ────────────────── */
-    @media (prefers-reduced-motion: reduce) {
-      .press-featured,
-      .press-featured::before,
-      .press-featured-tag::before,
-      .press-featured-arrow,
-      .press-featured-arrow .arrow,
-      .press-item,
-      .press-item::before,
-      .press-item-outlet,
-      .press-item-arrow {
-        transition: none !important;
-      }
-    }
-
     /* ─── RESPONSIVE ─────────────────────────────────────── */
     @media (max-width: 1100px) {
       #nav { padding: 0 2.5rem; }
@@ -1689,120 +1006,9 @@
       .pillars-grid { grid-template-columns: 1fr 1fr; }
       #team { padding: 5rem 2.5rem; }
       .team-grid { grid-template-columns: 1fr; max-width: 480px; }
-      #work {
-        min-height: auto;
-        height: auto;
-        max-height: none;
-      }
-      #work::before { left: 2.5rem; right: 2.5rem; }
-      .work-frame {
-        padding: 2.5rem 2.5rem 3rem;
-        grid-template-rows: auto auto auto auto;
-        gap: 1.5rem;
-      }
-      .work-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1rem;
-        padding-bottom: 1rem;
-      }
-      .work-strips {
-        grid-template-columns: 1fr;
-      }
-      .work-strip {
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 1.25rem 1rem;
-        border-right: none;
-        border-bottom: 1px solid rgba(28, 26, 20, 0.12);
-        min-height: 64px;
-        gap: 1rem;
-      }
-      .work-strip:last-child {
-        border-bottom: none;
-      }
-      .work-strip::before {
-        top: auto; bottom: 0; left: 0;
-        width: 100%; height: 3px;
-        transform: scaleX(0);
-        transform-origin: left;
-      }
-      .work-strip.is-active::before {
-        transform: scaleX(1);
-      }
-      .work-strip-head {
-        flex: 1;
-      }
-      .work-strip-folio {
-        margin-bottom: 0.4rem;
-      }
-      .work-strip-name {
-        font-size: 1.45rem;
-        line-height: 1.1;
-      }
-      .work-strip-status {
-        flex-shrink: 0;
-        font-size: 0;
-        letter-spacing: 0;
-      }
-      .work-strip-status .dot {
-        width: 9px;
-        height: 9px;
-      }
-      .work-reveal {
-        padding: 1.5rem 0 1.5rem;
-      }
-      .work-reveal-body {
-        font-size: 0.96rem;
-      }
-      .work-international {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 3rem 0 1rem;
-      }
-      .work-international-text {
-        font-size: 0.96rem;
-      }
-      .work-international-countries {
-        flex-direction: column;
-        gap: 0.4rem 0;
-        font-size: 1.1rem;
-      }
-      .work-international-countries span {
-        padding: 0;
-        margin-right: 0;
-      }
-      .work-international-countries span:not(:last-child)::after {
-        display: none;
-      }
       #approach { padding: 5rem 2.5rem; }
-      #press { padding: 5rem 2.5rem; }
-      .press-header {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-        margin-bottom: 3.5rem;
-        align-items: start;
-      }
-      .press-header-intro { padding-bottom: 0; }
-      .press-featured {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-        padding: 2rem 0;
-        align-items: start;
-      }
-      .press-featured:hover { padding-left: 0; }
-      .press-index {
-        grid-template-columns: 1fr;
-      }
-      .press-item {
-        padding: 2rem 0 2rem 0 !important;
-        border-right: none !important;
-      }
-      .press-item:nth-child(even) { padding-left: 0; }
-      .press-item:nth-child(even)::before { left: 0; }
-      .press-item:hover::before { width: 100%; }
       .approach-inner { grid-template-columns: 1fr; gap: 4rem; }
+      .approach-badge { left: 0; }
       #cta { padding: 5rem 2.5rem; }
       #contact { grid-template-columns: 1fr; gap: 4rem; padding: 5rem 2.5rem; }
       footer { flex-direction: column; gap: 1.5rem; text-align: center; padding: 2rem; }
@@ -1831,8 +1037,6 @@
       <li><a href="#hero" class="active">Home</a></li>
       <li><a href="#mission">About</a></li>
       <li><a href="#pillars">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#press">Press</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#contact" class="nav-connect">Connect</a></li>
     </ul>
@@ -1843,10 +1047,13 @@
     <div class="hero-content">
       <div class="hero-overline">Multidimensional Justice Solutions</div>
       <h1 class="hero-headline">
-        Shyfting<br>the
+        Shifting<br>the
         <em>Paradigm</em>
       </h1>
       <div class="hero-sub">Education · Business · Justice · Legislation · Media</div>
+      <p class="hero-desc">
+        We work at the intersection of systems and humanity — helping organizations dismantle barriers and build environments where every individual can thrive.
+      </p>
       <div class="hero-actions">
         <a href="#pillars" class="btn-primary">Our Services</a>
         <a href="#mission" class="btn-text">Our story <span class="arrow">→</span></a>
@@ -1877,7 +1084,7 @@
       <span class="marquee-item"><span class="marquee-dot"></span>Executive Consulting</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Group Presentations</span>
       <span class="marquee-item"><span class="marquee-dot"></span>One-on-One Sessions</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Global Lens</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>MIRROR Program</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Leadership Dinner</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Education</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Business</span>
@@ -1887,7 +1094,7 @@
       <span class="marquee-item"><span class="marquee-dot"></span>Executive Consulting</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Group Presentations</span>
       <span class="marquee-item"><span class="marquee-dot"></span>One-on-One Sessions</span>
-      <span class="marquee-item"><span class="marquee-dot"></span>Global Lens</span>
+      <span class="marquee-item"><span class="marquee-dot"></span>MIRROR Program</span>
       <span class="marquee-item"><span class="marquee-dot"></span>Leadership Dinner</span>
     </div>
   </div>
@@ -1945,8 +1152,8 @@
         <div class="service-row">
           <span class="svc-num">04</span>
           <div>
-            <div class="svc-name">Global Lens</div>
-            <div class="svc-desc">Paradigm Shyft brings a global lens to justice transformation, informed by firsthand observation of correctional and reentry systems across more than eight countries.</div>
+            <div class="svc-name">The MIRROR Program</div>
+            <div class="svc-desc">A proprietary framework for radical self-reflection and institutional accountability that drives measurable change.</div>
           </div>
           <span class="svc-arrow">→</span>
         </div>
@@ -2001,248 +1208,8 @@
       <div class="pillar-card featured reveal reveal-delay-3">
         <div class="featured-label">Ready to begin</div>
         <div class="pillar-name">Start the conversation.</div>
-        <div class="pillar-desc" style="margin-bottom:2rem;">Every paradigm shyft begins with a single honest conversation.</div>
+        <div class="pillar-desc" style="margin-bottom:2rem;">Every paradigm shift begins with a single honest conversation.</div>
         <a href="#contact" class="btn-gold">Get in Touch</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ WORK / PROJECTS — "THE INDEX, COMPRESSED" ══════════ -->
-  <section id="work">
-    <div class="work-frame">
-
-      <!-- Header line -->
-      <header class="work-header">
-        <h2 class="work-header-title">What we've <em>built.</em></h2>
-        <div class="work-header-mark">Selected Work · An Index</div>
-      </header>
-
-      <!-- Strip row — five projects, always visible -->
-      <div class="work-strips" role="tablist" aria-label="Selected projects">
-
-        <button class="work-strip is-active" type="button" role="tab" aria-selected="true" aria-controls="work-panel" data-target="panel-01">
-          <div class="work-strip-head">
-            <div class="work-strip-folio">No. 01</div>
-            <div class="work-strip-name">Home To <em>Stay</em></div>
-          </div>
-          <div class="work-strip-status"><span class="dot"></span>Active</div>
-        </button>
-
-        <button class="work-strip" type="button" role="tab" aria-selected="false" aria-controls="work-panel" data-target="panel-02">
-          <div class="work-strip-head">
-            <div class="work-strip-folio">No. 02</div>
-            <div class="work-strip-name"><em>M.O.R.E.</em></div>
-          </div>
-          <div class="work-strip-status"><span class="dot"></span>Active</div>
-        </button>
-
-        <button class="work-strip" type="button" role="tab" aria-selected="false" aria-controls="work-panel" data-target="panel-03">
-          <div class="work-strip-head">
-            <div class="work-strip-folio">No. 03</div>
-            <div class="work-strip-name">Reentry <em>Royale</em></div>
-          </div>
-          <div class="work-strip-status"><span class="dot"></span>Active</div>
-        </button>
-
-        <button class="work-strip" type="button" role="tab" aria-selected="false" aria-controls="work-panel" data-target="panel-04">
-          <div class="work-strip-head">
-            <div class="work-strip-folio">No. 04</div>
-            <div class="work-strip-name"><em>MIRROR</em></div>
-          </div>
-          <div class="work-strip-status is-concluded"><span class="dot"></span>Concluded</div>
-        </button>
-
-        <button class="work-strip" type="button" role="tab" aria-selected="false" aria-controls="work-panel" data-target="panel-05">
-          <div class="work-strip-head">
-            <div class="work-strip-folio">No. 05</div>
-            <div class="work-strip-name">Milwaukee <em>Reentry Council</em></div>
-          </div>
-          <div class="work-strip-status"><span class="dot"></span>Active</div>
-        </button>
-
-      </div>
-
-      <!-- Reveal panel — content swaps based on active strip -->
-      <div class="work-reveal" id="work-panel" role="tabpanel" aria-live="polite">
-
-        <div class="work-reveal-panel is-active" data-panel="panel-01">
-          <p class="work-reveal-body">
-            Home To Stay is a reentry ecosystem designed to help people navigate the critical barriers they face after incarceration, including housing, employment, identification, supervision, transportation, and basic stability. Through resource fairs, digital tools, community partnerships, and coordinated service pathways, Home To Stay helps turn a fragmented reentry landscape into a more accessible and connected support system.
-          </p>
-        </div>
-
-        <div class="work-reveal-panel" data-panel="panel-02">
-          <p class="work-reveal-body">
-            The Mobile Office of Reentry Education, or M.O.R.E., is a mobile reentry resource unit designed to bring support directly into the community. Built from a converted ambulance, M.O.R.E. functions as a frontline navigation hub, helping individuals identify urgent needs, connect with resources, and receive warm handoffs where they are, not just where services happen to be located.
-          </p>
-        </div>
-
-        <div class="work-reveal-panel" data-panel="panel-03">
-          <p class="work-reveal-body">
-            Reentry Royale is a practical, portable resource tool that transforms a standard deck of cards into a reentry navigation guide. Each card highlights a community provider, service, or support pathway, creating a simple and accessible way to put critical reentry information directly into the hands of people preparing to return home.
-          </p>
-        </div>
-
-        <div class="work-reveal-panel" data-panel="panel-04">
-          <p class="work-reveal-body">
-            MIRROR is a youth violence prevention and transformation initiative that brings together young people, crime survivors, formerly incarcerated mentors, law enforcement, and community leaders. The program creates structured opportunities for reflection, accountability, relationship-building, and healing, helping participants see both themselves and one another beyond labels, harm, and past mistakes.
-          </p>
-        </div>
-
-        <div class="work-reveal-panel" data-panel="panel-05">
-          <p class="work-reveal-body">
-            The Milwaukee Reentry Council is a collaborative focused on improving reentry outcomes across Milwaukee County. Through working groups such as Home To Stay, housing, and healthcare, the Council brings service providers, justice partners, community leaders, and people with lived experience together to coordinate strategy, identify gaps, and strengthen the reentry ecosystem.
-          </p>
-        </div>
-
-      </div>
-
-      <!-- International section — real area, full paragraph -->
-      <div class="work-international">
-        <div class="work-international-head">
-          <h3 class="work-international-title">International <em>Travel</em></h3>
-        </div>
-        <div class="work-international-body">
-          <p class="work-international-text">
-            We have traveled to Belize, Germany, The Netherlands, Denmark, Brazil, Argentina, Chile, and South Korea (in June) to visit, connect with, and study cultures and criminal legal systems in other countries. We then provide reports on some of these trips and use our observations and findings in our work locally to better support and expand possibilities for those in our network.
-          </p>
-          <div class="work-international-countries">
-            <span>Belize</span><span>Germany</span><span>Netherlands</span><span>Denmark</span><span>Brazil</span><span>Argentina</span><span>Chile</span><span class="country-pending">South Korea, June</span>
-          </div>
-          <a href="https://docs.google.com/document/d/1HTirhx7b7bFKR7fpb-01J_H9-_0uczdif-6XxiSW-Kw/edit?usp=drivesdk" target="_blank" rel="noopener" class="work-international-report">
-            Read the Brazil report <span class="arrow">→</span>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ══ PRESS & MEDIA ══════════════════════════════════════ -->
-  <section id="press">
-    <div class="press-frame">
-
-      <!-- Header -->
-      <div class="press-header reveal">
-        <h2 class="press-header-title">Press &amp; <em>Media.</em></h2>
-        <p class="press-header-intro">
-          Selected appearances, features, and original writing across national and regional outlets.
-        </p>
-      </div>
-
-      <!-- Featured: published book -->
-      <a href="https://a.co/d/5pCe2PE" target="_blank" rel="noopener" class="press-featured reveal">
-        <div class="press-featured-tag">Published Work · Author</div>
-        <div>
-          <div class="press-featured-title">The Trenches of Change: From Incarceration to Legislation</div>
-          <div class="press-featured-meta">Available on Amazon</div>
-        </div>
-        <div class="press-featured-arrow">View book <span class="arrow">→</span></div>
-      </a>
-
-      <!-- Press index -->
-      <div class="press-index">
-
-        <!-- TEDx — National platform -->
-        <a href="https://youtu.be/UpwJWug_N7s?si=re0fLZfLGoK2Hr4D" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-tedx">TED<span class="x">x</span></div>
-            <div class="press-item-title">A TEDx talk on transformation</div>
-            <div class="press-item-meta">Talk · Video</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- JSOnline — Op-Ed (author byline) -->
-        <a href="https://www.jsonline.com/story/opinion/2024/10/09/wisconsin-corrections-probation-prison-release/75171885007/" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-jsonline">Milwaukee Journal Sentinel</div>
-            <div class="press-item-title">Op-Ed: On Wisconsin corrections, probation, and prison release</div>
-            <div class="press-item-meta">Opinion · By the author</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- JSOnline — Feature -->
-        <a href="https://www.jsonline.com/story/news/crime/2023/08/21/milwaukee-man-jailed-for-homicide-at-15-now-helps-others-leave-prison/70500762007/" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-jsonline">Milwaukee Journal Sentinel</div>
-            <div class="press-item-title">A Milwaukee man jailed at 15 now helps others leave prison</div>
-            <div class="press-item-meta">Feature · Home To Stay</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- Fox6 — Recipe for Change -->
-        <a href="https://www.fox6now.com/news/paradigm-shyft-dinner-milwaukee" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-fox6">FOX<span class="six">6</span></div>
-            <div class="press-item-title">Recipe for Change: a Paradigm Shyft dinner</div>
-            <div class="press-item-meta">Broadcast · Milwaukee</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- Fox6 — Resignation -->
-        <a href="https://www.fox6now.com/news/milwaukee-violence-prevention-procell-resign" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-fox6">FOX<span class="six">6</span></div>
-            <div class="press-item-title">Milwaukee violence prevention leadership steps down</div>
-            <div class="press-item-meta">Broadcast · Milwaukee</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- TMJ4 — Penance -->
-        <a href="https://www.tmj4.com/news/milwaukee-county/convicted-killer-to-lead-milwaukees-violence-prevention-office-this-isnt-a-job-its-penance" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-tmj4">TMJ<span class="four">4</span></div>
-            <div class="press-item-title">"This isn't a job — it's penance": leading Milwaukee's violence prevention office</div>
-            <div class="press-item-meta">Broadcast · Milwaukee</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- TMJ4 — Community Reentry Center -->
-        <a href="https://www.tmj4.com/news/local-news/community-reentry-center-hopes-to-keep-the-formerly-incarcerated-out-of-prison" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-tmj4">TMJ<span class="four">4</span></div>
-            <div class="press-item-title">A community reentry center to keep the formerly incarcerated out of prison</div>
-            <div class="press-item-meta">Broadcast · Home To Stay</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- Her Story in Blue -->
-        <a href="https://youtu.be/katykOLlLBs?si=xDSDudlrH4UH9TGY" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-youtube">YouTube</div>
-            <div class="press-item-title">Her Story in Blue</div>
-            <div class="press-item-meta">Documentary feature</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- Vengeance or Justice -->
-        <a href="https://youtu.be/z98og5rIemc" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-youtube">YouTube</div>
-            <div class="press-item-title">Vengeance or Justice</div>
-            <div class="press-item-meta">Short film</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
-        <!-- Leap of Faith -->
-        <a href="https://www.youtube.com/watch?v=optVuOhhDg8" target="_blank" rel="noopener" class="press-item reveal">
-          <div class="press-item-content">
-            <div class="press-item-outlet outlet-youtube">YouTube</div>
-            <div class="press-item-title">Leap of Faith</div>
-            <div class="press-item-meta">Feature</div>
-          </div>
-          <div class="press-item-arrow">↗</div>
-        </a>
-
       </div>
     </div>
   </section>
@@ -2251,7 +1218,7 @@
   <section id="team">
     <div style="margin-bottom:4rem;" class="reveal">
       <div class="section-label">The Team</div>
-      <h2 class="display">The people behind<br>the <em>shyft.</em></h2>
+      <h2 class="display">The people behind<br>the <em>shift.</em></h2>
     </div>
     <div class="team-grid">
 
@@ -2268,13 +1235,7 @@
           <div class="team-role">Chief Executive Officer</div>
           <div class="team-name">Adam</div>
           <p class="team-bio">
-            Adam is the architect of Act 233, the Wisconsin law mandating the development of community reentry centers to better organize services and improve outcomes, and he leads Home To Stay, a shared resource model that unifies reentry services across Milwaukee. He currently serves as Chair of the Milwaukee Reentry Council, where he works to align city, county, and community partners around shared strategy, data-informed practices, and stronger pathways to stability for returning citizens.
-          </p>
-          <p class="team-bio" style="margin-top:1rem;">
-            Adam previously served as the Director of Milwaukee's Department of Community Wellness and Safety, a mayoral cabinet-level role, where he led a citywide approach to violence reduction that treated community safety as both a public health and public safety priority. His work focused on coordinating government agencies, healthcare systems, and community-based organizations through shared data, aligned deployment, and long-term prevention frameworks. That experience continues to inform his systems-level approach to reentry and public safety.
-          </p>
-          <p class="team-bio" style="margin-top:1rem;">
-            In addition to his domestic work, Adam has contributed to international peacebuilding efforts, including dialogue initiatives between Israel and Palestine that center lived experience and human connection in conflict resolution. He is an adjunct instructor at Marquette University and a nationally sought-after speaker, having presented at TEDx, The Nantucket Project, and other national forums. He is the author of <em>Anatomizing the Gang Culture</em> and <em>The Trenches of Change: From Incarceration to Legislation</em>.
+            With over a decade of work at the intersection of justice, education, and systems change, Adam founded Paradigm Shyft to transform how organizations approach equity — from the inside out.
           </p>
         </div>
       </div>
@@ -2292,7 +1253,7 @@
           <div class="team-role">Operations Assistant</div>
           <div class="team-name">Shannon</div>
           <p class="team-bio">
-            In addition to co-founding Paradigm Shyft, Shannon is also the CEO/Founder of The Community, has a graduate degree in Sustainable Peacebuilding from the University of Wisconsin – Milwaukee, is an Ed Trust fellow and Represent Justice alumnus, is a consultant with Marquette McNeely Prison Education Consortium, and is also a first-time father.
+            Shannon keeps Paradigm Shyft running with precision and care — ensuring every client experience is seamless, every detail is handled, and every engagement delivers on its promise.
           </p>
         </div>
       </div>
@@ -2307,6 +1268,10 @@
         <div class="approach-img-wrap">
           <img src="milwaukee.jpg" alt="Milwaukee" />
           <div class="approach-img-accent"></div>
+          <div class="approach-badge">
+            <span class="approach-badge-num">10+</span>
+            <span class="approach-badge-label">Years of Impact</span>
+          </div>
         </div>
       </div>
       <div class="approach-content reveal reveal-delay-2">
@@ -2343,10 +1308,27 @@
             </div>
             <div>
               <div class="step-title">Measure &amp; Sustain</div>
-              <div class="step-desc">We track real outcomes and stay alongside you to ensure the shyft sticks long-term.</div>
+              <div class="step-desc">We track real outcomes and stay alongside you to ensure the shift sticks long-term.</div>
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTA BAND ═══════════════════════════════════════════ -->
+  <section id="cta">
+    <div class="cta-inner reveal">
+      <div class="section-label">Take the First Step</div>
+      <h2 class="cta-title">
+        The conversation that<br><em>changes everything</em>
+      </h2>
+      <p class="cta-body">
+        Whether you represent an institution ready for change, a leader seeking clarity, or a community demanding better — we are here to work alongside you.
+      </p>
+      <div class="cta-actions">
+        <a href="#contact" class="btn-primary">Schedule a Consultation</a>
+        <a href="#pillars" class="btn-text">Explore our services <span class="arrow">→</span></a>
       </div>
     </div>
   </section>
@@ -2355,9 +1337,9 @@
   <section id="contact">
     <div class="reveal">
       <div class="section-label">Get In Touch</div>
-      <h2 class="display">Let's start<br>your <em>shyft.</em></h2>
+      <h2 class="display">Let's start<br>your <em>shift.</em></h2>
       <p class="contact-body">
-        Ready to explore what a paradigm shyft looks like for your organization? Reach out and we'll set up an initial conversation.
+        Ready to explore what a paradigm shift looks like for your organization? Reach out and we'll set up an initial conversation.
       </p>
       <div class="contact-info">
         <div class="contact-info-item">
@@ -2366,7 +1348,7 @@
           </div>
           <div>
             <div class="contact-info-label">Email</div>
-            <div class="contact-info-value">Shannon@paradigmshyft.org</div>
+            <div class="contact-info-value">info@paradigmshyft.org</div>
           </div>
         </div>
         <div class="contact-info-item">
@@ -2418,7 +1400,7 @@
             <option value="executive">Executive Consultation</option>
             <option value="group">Group Presentation</option>
             <option value="oneonone">One-on-One Consultation</option>
-            <option value="mirror">Global Lens</option>
+            <option value="mirror">The MIRROR Program</option>
             <option value="dinner">Leadership Dinner Series</option>
             <option value="other">Other / Not Sure Yet</option>
           </select>
@@ -2444,8 +1426,6 @@
       <li><a href="#hero">Home</a></li>
       <li><a href="#mission">About</a></li>
       <li><a href="#pillars">Services</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#press">Press</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#contact">Connect</a></li>
     </ul>
@@ -2481,86 +1461,12 @@
         revealObs.observe(el);
       });
 
-      // Work section — fade in when section is in view
-      const workSection = document.getElementById('work');
-      if (workSection) {
-        workSection.classList.add('animate-ready');
-        const workSectionObs = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('in');
-              workSectionObs.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-        workSectionObs.observe(workSection);
-      }
-
       // Failsafe: after 2s force-show anything still hidden
       setTimeout(() => {
         document.querySelectorAll('.reveal.animate-ready:not(.in)').forEach(el => {
           el.classList.add('in');
         });
-        if (workSection) workSection.classList.add('in');
       }, 2000);
-    }
-
-    /* ── Work strip tabs — user-driven, no auto-rotation ── */
-    function initWorkStrips() {
-      const container = document.querySelector('.work-strips');
-      const panelContainer = document.getElementById('work-panel');
-      if (!container || !panelContainer) return;
-
-      function activate(target) {
-        if (!target) return;
-        const strips = container.querySelectorAll('.work-strip');
-        const panels = panelContainer.querySelectorAll('.work-reveal-panel');
-        strips.forEach(s => {
-          const match = s.dataset.target === target;
-          s.classList.toggle('is-active', match);
-          s.setAttribute('aria-selected', match ? 'true' : 'false');
-        });
-        panels.forEach(p => {
-          p.classList.toggle('is-active', p.dataset.panel === target);
-        });
-      }
-
-      // Event delegation — survives any future DOM changes
-      container.addEventListener('click', (e) => {
-        const strip = e.target.closest('.work-strip');
-        if (!strip) return;
-        activate(strip.dataset.target);
-      });
-
-      container.addEventListener('mouseover', (e) => {
-        const strip = e.target.closest('.work-strip');
-        if (!strip) return;
-        activate(strip.dataset.target);
-      });
-
-      // Keyboard arrows on focused strip
-      container.addEventListener('keydown', (e) => {
-        const strip = e.target.closest('.work-strip');
-        if (!strip) return;
-        const strips = Array.from(container.querySelectorAll('.work-strip'));
-        const idx = strips.indexOf(strip);
-        let nextIdx = null;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') nextIdx = (idx + 1) % strips.length;
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') nextIdx = (idx - 1 + strips.length) % strips.length;
-        if (e.key === 'Home') nextIdx = 0;
-        if (e.key === 'End') nextIdx = strips.length - 1;
-        if (nextIdx !== null) {
-          e.preventDefault();
-          strips[nextIdx].focus();
-          activate(strips[nextIdx].dataset.target);
-        }
-      });
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initWorkStrips);
-    } else {
-      initWorkStrips();
     }
 
     /* ── Active nav link ── */
@@ -2582,9 +1488,4 @@
       e.preventDefault();
       const msg = document.getElementById('form-msg');
       msg.style.display = 'block';
-      e.target.reset();
-      setTimeout(() => { msg.style.display = 'none'; }, 5000);
-    }
-  </script>
-</body>
-</html>
+     
